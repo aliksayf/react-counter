@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import CounterItem from "./CounerItem";
 import NewItem from "./NewItem";
-import { Alert , Button, ButtonGroup, ListGroup  } from 'reactstrap';
+import ModalExample from './ModalWindow';
+import {Alert, Button, ListGroup, } from 'reactstrap';
 
 const items = [
     {name: 'First', value: 12, id: 1},
@@ -12,6 +13,10 @@ export default function Counters() {
 
 
     const [counterList, setCounterList] = useState(items);
+    const [modal, setModal] = useState(false);
+
+    const toggle = () => setModal(!modal);
+
 
     const counterChange = (id, difference) => {
         let array = [...counterList];
@@ -26,15 +31,16 @@ export default function Counters() {
 
     const resetItem = (id) => {
         let array = [...counterList];
-        array.map(el=> el.id === id ? el.value = 0 : '');
+        array.map(el => el.id === id ? el.value = 0 : '');
         setCounterList(array);
     };
 
     const addItem = (nameItem, valueItem) => {
-        let array = [...counterList];
-        array.push({name: nameItem, value: valueItem, id: Math.random()});
-        setCounterList(array);
-        console.log('add')
+        if(nameItem !== ''){
+            let array = [...counterList];
+            array.push({name: nameItem, value: valueItem, id: Math.random()});
+            setCounterList(array);
+        }else toggle();
     };
 
     const resetTotal = () => {
@@ -49,10 +55,9 @@ export default function Counters() {
                    className="d-flex align-items-center justify-content-center ">
                 <h3>
                     Total:
-                    {counterList.map(el => el.value).reduce((a, b) => a + b)}
-                <Button size="md" color="warning" onClick={resetTotal}>Reset All</Button>
+                    {counterList.length !== 0 ? counterList.map(el => el.value).reduce((a, b) => a + b) : 0}
+                    <Button size="md" color="warning" onClick={resetTotal}>Reset All</Button>
                 </h3>
-
             </Alert>
             <ListGroup>
 
@@ -62,10 +67,12 @@ export default function Counters() {
                     counterChange={counterChange}
                     removeItem={removeItem}
                     resetItem={resetItem}
-                    />)}
+                />)}
 
             </ListGroup>
             <NewItem addItem={addItem}/>
+            <ModalExample modal={modal}
+                          toggle={toggle}/>
         </div>
     );
 };

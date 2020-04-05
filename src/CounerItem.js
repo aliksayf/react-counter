@@ -6,8 +6,6 @@ import {
     Row,
     ButtonGroup,
     ListGroupItem,
-    Alert,
-    InputGroup,
     InputGroupAddon,
 } from 'reactstrap';
 
@@ -18,20 +16,23 @@ export default function CounterItem(props) {
     return (
         <ListGroupItem>
             {/*<InputGroup>*/}
+            <Row>
 
-            <ButtonToolbar>
 
                 <Col xs='5'>
-                    <InputGroupAddon>
+                    <InputGroupAddon addonType="prepend">
                         {name}
                     </InputGroupAddon>
                 </Col>
+                <Col xs='6'>
+
+            <ButtonToolbar>
                 <ButtonGroup>
                     <Button onClick={() => props.counterChange(id, -1)}>-</Button>
                     <Button disabled={true} >
-                        <Col xs='3' outline color="secondary">
+                        <InputGroupAddon addonType="append" xs='3' outline color="secondary">
                             {value}
-                        </Col>
+                        </InputGroupAddon>
                     </Button>
                     <Button onClick={() => props.counterChange(id, 1)}>+</Button>
                 </ButtonGroup>
@@ -40,6 +41,8 @@ export default function CounterItem(props) {
                     <Button color="warning" onClick={() => props.resetItem(id)}>Reset</Button>
                 </ButtonGroup>
             </ButtonToolbar>
+                </Col>
+            </Row>
             {/*</InputGroup>*/}
         </ListGroupItem>
     );
