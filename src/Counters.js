@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import CounterItem from "./CounerItem";
 import NewItem from "./NewItem";
+import { Alert , Button, ButtonGroup, ListGroup  } from 'reactstrap';
 
 const items = [
     {name: 'First', value: 12, id: 1},
@@ -44,17 +45,26 @@ export default function Counters() {
 
     return (
         <div>
-            Total: {counterList.map(el => el.value).reduce((a, b) => a + b)}
-            <button onClick={resetTotal}>Reset All</button>
+            <Alert color="dark"
+                   className="d-flex align-items-center justify-content-center ">
+                <h3>
+                    Total:
+                    {counterList.map(el => el.value).reduce((a, b) => a + b)}
+                <Button size="md" color="warning" onClick={resetTotal}>Reset All</Button>
+                </h3>
 
-            {counterList.map(el => <CounterItem
-                key={el.id}
-                list={el}
-                counterChange={counterChange}
-                removeItem={removeItem}
-                resetItem={resetItem}
-                />)}
+            </Alert>
+            <ListGroup>
 
+                {counterList.map(el => <CounterItem
+                    key={el.id}
+                    list={el}
+                    counterChange={counterChange}
+                    removeItem={removeItem}
+                    resetItem={resetItem}
+                    />)}
+
+            </ListGroup>
             <NewItem addItem={addItem}/>
         </div>
     );

@@ -1,12 +1,13 @@
 import React from 'react';
-import './App.css';
+// import './App.css';
+import { Container } from 'reactstrap';
 import Counters from "./Counters";
 
 function App() {
   return (
-    <div className="App">
+    <Container className="themed-container">
       <Counters/>
-    </div>
+    </Container>
   );
 }
 
