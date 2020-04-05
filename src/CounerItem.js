@@ -20,7 +20,7 @@ export default function CounterItem(props) {
 
 
                 <Col xs='5'>
-                    <InputGroupAddon addonType="prepend">
+                    <InputGroupAddon addonType="">
                         {name}
                     </InputGroupAddon>
                 </Col>
@@ -30,7 +30,7 @@ export default function CounterItem(props) {
                 <ButtonGroup>
                     <Button onClick={() => props.counterChange(id, -1)}>-</Button>
                     <Button disabled={true} >
-                        <InputGroupAddon addonType="append" xs='3' outline color="secondary">
+                        <InputGroupAddon  outline color="secondary" addonType="" >
                             {value}
                         </InputGroupAddon>
                     </Button>

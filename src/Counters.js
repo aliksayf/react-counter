@@ -36,11 +36,9 @@ export default function Counters() {
     };
 
     const addItem = (nameItem, valueItem) => {
-        if(nameItem !== ''){
-            let array = [...counterList];
-            array.push({name: nameItem, value: valueItem, id: Math.random()});
-            setCounterList(array);
-        }else toggle();
+        let array = [...counterList];
+        array.push({name: nameItem, value: valueItem, id: Math.random()});
+        setCounterList(array);
     };
 
     const resetTotal = () => {
