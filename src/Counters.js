@@ -37,7 +37,7 @@ export default function Counters() {
 
     const addItem = (nameItem, valueItem) => {
         let array = [...counterList];
-        array.push({name: nameItem, value: valueItem, id: Math.random()});
+        array.push({name: nameItem, value: +valueItem, id: Math.random()});
         setCounterList(array);
     };
 
