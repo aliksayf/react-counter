@@ -14,8 +14,13 @@ export default function Counters() {
 
     const [counterList, setCounterList] = useState(items);
     const [modal, setModal] = useState(false);
+    const [removedCounter, setRemovedCounter] = useState({});
 
-    const toggle = () => setModal(!modal);
+    const toggle = (id) => {
+        setModal(!modal);
+        counterList.map(el => el.id === id ? setRemovedCounter({...el}) : '');
+
+    }
 
 
     const counterChange = (id, difference) => {
@@ -25,6 +30,7 @@ export default function Counters() {
     };
 
     const removeItem = (id) => {
+        toggle(id);
         let array = counterList.filter(el => el.id !== id);
         setCounterList(array);
     };
@@ -63,14 +69,16 @@ export default function Counters() {
                     key={el.id}
                     list={el}
                     counterChange={counterChange}
-                    removeItem={removeItem}
+                    removeItem={toggle}
                     resetItem={resetItem}
                 />)}
 
             </ListGroup>
             <NewItem addItem={addItem}/>
             <ModalExample modal={modal}
-                          toggle={toggle}/>
+                          toggle={toggle}
+                          counterName={removedCounter}
+                          removeItem={removeItem}/>
         </div>
     );
 };

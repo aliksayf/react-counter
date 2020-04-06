@@ -1,19 +1,37 @@
-import React from 'react';
-import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
+import React, { useState } from 'react';
+import { Button, Modal, ModalBody, ModalFooter, ModalHeader, Input } from 'reactstrap';
 
 const ModalExample = (props) => {
     const {
         className,
         toggle,
-        modal
+        modal,
+        counterName,
+        removeItem
     } = props;
+
+    const [disabledDelete, setDisabledDelete] = useState(true);
+
+    const checkConfirmName = (e) => {
+        if(e.trim().toLowerCase() === counterName.name.toLowerCase()) {
+            setDisabledDelete(false);
+        }else setDisabledDelete(true);
+    }
+
+    const deleteHandler = () => {
+            toggle();
+            removeItem(counterName.id);
+    };
 
 
     return (
         <div>
             <Modal isOpen={modal} toggle={toggle} className={className}>
-                <ModalBody toggle={toggle}>Please enter counter name!</ModalBody>
+                <ModalHeader toggle={toggle}>Delete confirmation</ModalHeader>
+                <ModalBody toggle={toggle}>Please enter counter name <strong>{counterName.name}</strong> to delete it</ModalBody>
+                <Input onChange={(e)=>checkConfirmName(e.target.value)}/>
                 <ModalFooter>
+                    <Button disabled={disabledDelete} color="danger" onClick={deleteHandler} type='submit'>Delete</Button>
                     <Button color="secondary" onClick={toggle}>Close</Button>
                 </ModalFooter>
             </Modal>
