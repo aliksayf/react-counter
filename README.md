@@ -8,7 +8,9 @@ Each counter has name and value fields, `-`/`+` and `Delete`/`Reset` buttons.
 
 `-`/`+` buttons increase and decrease value of counter
 
-`Delete` button removes counter
+`Delete` displays modal confirmation window
+
+In modal window `Delete` button is active if entered name is equal to asked name
 
 `Reset` sets value of counter to `0`
 
