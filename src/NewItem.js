@@ -27,6 +27,12 @@ export default function NewItem(props) {
         }
     };
 
+    const keyPressed = (e) => {
+        if (e.key === "Enter") {
+            submitButtonHandler()
+        }
+    };
+
 
     return (
         <ListGroupItem color="secondary">
@@ -42,11 +48,13 @@ export default function NewItem(props) {
                         <Input onChange={(e) => inputNameHandler(e.target.value)}
                                placeholder="Counter name"
                                value={itemName}
+                               onKeyPress={keyPressed}
                                invalid={nameValidator}/>
                         <Input onChange={(e) => inputValueHandler(e.target.value)}
                                placeholder="Counter value"
                                type='number'
-                               value={itemValue}/>
+                               value={itemValue}
+                               onKeyPress={keyPressed}/>
                         <Button addonType="prepend" color="secondary"
                                 onClick={submitButtonHandler}>Add
                         </Button>
