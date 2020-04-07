@@ -48,7 +48,8 @@ export default function NewItem(props) {
                                placeholder="Counter name"
                                value={itemName}
                                onKeyPress={keyPressed}
-                               invalid={nameValidator}/>
+                               invalid={nameValidator}
+                               />
                         <Input onChange={(e) => inputValueHandler(e.target.value)}
                                placeholder="Counter value"
                                type='number'

@@ -37,7 +37,7 @@ const ModalExample = (props) => {
                 <ModalBody toggle={toggle}>
                     Please enter counter name <strong>{counterName.name}</strong> to delete it
                 </ModalBody>
-                <Input onChange={(e) => checkConfirmName(e.target.value)} onKeyPress={keyPressed}/>
+                <Input onChange={(e) => checkConfirmName(e.target.value)} onKeyPress={keyPressed} />
                 <ModalFooter>
                     <Button disabled={disabledDelete} color="danger" onClick={deleteHandler}>Delete</Button>
                     <Button color="secondary" onClick={toggle}>Close</Button>
