@@ -29,10 +29,9 @@ export default function NewItem(props) {
 
     const keyPressed = (e) => {
         if (e.key === "Enter") {
-            submitButtonHandler()
+            submitButtonHandler();
         }
     };
-
 
     return (
         <ListGroupItem color="secondary">

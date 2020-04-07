@@ -14,9 +14,9 @@ In modal window `Delete` button is active if entered name is equal to asked name
 
 `Reset` sets value of counter to `0`
 
-`New counter` field hs a form for creating a new counter
+`New counter` field has a form for creating a new counter
 
-`Counter name` has to be filled
+`Counter name` has to be filled out
 
 `Counter value` has to be a number
 

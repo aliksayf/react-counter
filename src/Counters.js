@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import CounterItem from "./CounerItem";
 import NewItem from "./NewItem";
 import ModalExample from './ModalWindow';
-import {Alert, Button, ListGroup, } from 'reactstrap';
+import {Alert, Button, ListGroup,} from 'reactstrap';
 
 const items = [
     {name: 'First', value: 12, id: 1},
@@ -20,7 +20,7 @@ export default function Counters() {
         setModal(!modal);
         counterList.map(el => el.id === id ? setRemovedCounter({...el}) : '');
 
-    }
+    };
 
 
     const counterChange = (id, difference) => {

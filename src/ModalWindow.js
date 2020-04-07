@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Button, Modal, ModalBody, ModalFooter, ModalHeader, Input } from 'reactstrap';
+import React, {useState} from 'react';
+import {Button, Modal, ModalBody, ModalFooter, ModalHeader, Input} from 'reactstrap';
 
 const ModalExample = (props) => {
     const {
@@ -13,14 +13,14 @@ const ModalExample = (props) => {
     const [disabledDelete, setDisabledDelete] = useState(true);
 
     const checkConfirmName = (e) => {
-        if(e.trim().toLowerCase() === counterName.name.toLowerCase()) {
+        if (e.trim().toLowerCase() === counterName.name.toLowerCase()) {
             setDisabledDelete(false);
-        }else setDisabledDelete(true);
+        } else setDisabledDelete(true);
     }
 
     const deleteHandler = () => {
-            toggle();
-            removeItem(counterName.id);
+        toggle();
+        removeItem(counterName.id);
     };
 
     const keyPressed = (e) => {
@@ -34,10 +34,12 @@ const ModalExample = (props) => {
         <div>
             <Modal isOpen={modal} toggle={toggle} className={className}>
                 <ModalHeader toggle={toggle}>Delete confirmation</ModalHeader>
-                <ModalBody toggle={toggle}>Please enter counter name <strong>{counterName.name}</strong> to delete it</ModalBody>
-                <Input onChange={(e)=>checkConfirmName(e.target.value)} onKeyPress={keyPressed}/>
+                <ModalBody toggle={toggle}>
+                    Please enter counter name <strong>{counterName.name}</strong> to delete it
+                </ModalBody>
+                <Input onChange={(e) => checkConfirmName(e.target.value)} onKeyPress={keyPressed}/>
                 <ModalFooter>
-                    <Button disabled={disabledDelete} color="danger" onClick={deleteHandler} type='submit'>Delete</Button>
+                    <Button disabled={disabledDelete} color="danger" onClick={deleteHandler}>Delete</Button>
                     <Button color="secondary" onClick={toggle}>Close</Button>
                 </ModalFooter>
             </Modal>
